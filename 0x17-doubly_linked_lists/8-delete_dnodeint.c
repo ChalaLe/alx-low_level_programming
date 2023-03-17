@@ -10,41 +10,40 @@ unsigned int len_node(dlistint_t **node);
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-    dlistint_t *start;
-    unsigned int i, len = 0;
-    
-    len = len_node(head);
+	dlistint_t *start;
+	unsigned int i, len = 0;
 
-    start = *head;
-    if (*head == NULL)
-        return (-1);
-    if (index == 0)
-    {
-        start = start->next;
-        free(*head);
-        *head = start;
-        if (start != NULL)
-            start->prev = NULL;
-        return (1);
-    }
-    for (i = 0; i <= index - 1; i++)
-    {
-        start = start->next;
-        if (!start)
-            return (-1);
-    }
-    if (len - 1 == index)
-    {
-        start->prev->next = NULL;
-        free(start);
-        return (1);
-    }
-    start->prev->next = start->next;
-    start->next->prev = start->prev;
-    free(start);
-    return (1);
+	len = len_node(head);
+
+	start = *head;
+	if (*head == NULL)
+		return (-1);
+	if (index == 0)
+	{
+		start = start->next;
+		free(*head);
+		*head = start;
+		if (start != NULL)
+			start->prev = NULL;
+		return (1);
+	}
+	for (i = 0; i <= index - 1; i++)
+	{
+		start = start->next;
+		if (!start)
+			return (-1);
+	}
+	if (len - 1 == index)
+	{
+		start->prev->next = NULL;
+		free(start);
+		return (1);
+	}
+	start->prev->next = start->next;
+	start->next->prev = start->prev;
+	free(start);
+	return (1);
 }
-
 /**
  * len_node - count number of nodes in a doubly linked list
  * @node: pointer to pointer to the head of the list
@@ -52,14 +51,14 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
  */
 unsigned int len_node(dlistint_t **node)
 {
-    unsigned int len = 0;
-    dlistint_t *start;
+	unsigned int len = 0;
+	dlistint_t *start;
 
-    start = *node;
-    while (start != NULL)
-    {
-        len += 1;
-        start = start->next;
-    }
-    return (len);
+	start = *node;
+	while (start != NULL)
+	{
+		len += 1;
+		start = start->next;
+	}
+	return (len);
 }
